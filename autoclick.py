@@ -7,7 +7,7 @@ from pynput.keyboard import Listener, KeyCode
 
 # four variables to control the auto-clicker
 delay = 0.5
-#Button.right for right-click
+#Button.right for right-click, but it's LMB for now
 button = Button.left
 start_stop_key = KeyCode(char='`')
 stop_key = KeyCode(char='\')
@@ -28,9 +28,11 @@ class ClickMouse(threading.Thread):
     def start_clicking(self):
         self.running = True
 
+    #Using same button to pause and not terminate program
     def stop_clicking(self):
         self.running = False
 
+    #Hard exit program
     def exit(self):
         self.stop_clicking()
         self.program_running = False
